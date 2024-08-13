@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitorar Sites</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        #resultado {
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .status {
+            font-weight: bold;
+        }
+        .online {
+            color: green;
+        }
+        .offline {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monitorar Sites</h1>
+    <input type="text" id="url" placeholder="Digite a URL do site" />
+    <button onclick="adicionarSite()">Adicionar Site</button>
+    <button onclick="verificarSites()">Verificar Status</button>
+
+    <ul id="lista-sites"></ul>
+    <div id="resultado"></div>
+
+    <script>
+        const listaSites = [];
+
+        function adicionarSite() {
+            const urlInput = document.getElementById('url');
+            const url = urlInput.value.trim();
+
+            if (!url) {
+                alert('Por favor, insira uma URL.');
+                return;
+            }
+
+            // Adicionar http:// se a URL não começar com http:// ou https://
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'http://' + url;
+            }
+
+            if (listaSites.includes(url)) {
+                alert('O site já está na lista.');
+                return;
+            }
+
+            listaSites.push(url);
+            atualizarLista();
+            urlInput.value = '';
+        }
+
+        function atualizarLista() {
+            const listaElement = document.getElementById('lista-sites');
+            listaElement.innerHTML = '';
+
+            listaSites.forEach(url => {
+                const li = document.createElement('li');
+                li.innerHTML = `${url} - <span class="status" id="status-${encodeURIComponent(url)}">Aguardando...</span>`;
+                listaElement.appendChild(li);
+            });
+        }
+
+        function verificarSites() {
+            listaSites.forEach(url => {
+                fetch(url, { method: 'HEAD' })
+                    .then(response => {
+                        const statusElement = document.getElementById(`status-${encodeURIComponent(url)}`);
+                        if (response.ok) {
+                            statusElement.textContent = 'Online';
+                            statusElement.className = 'status online';
+                        } else {
+                            statusElement.textContent = 'Offline';
+                            statusElement.className = 'status offline';
+                        }
+                    })
+                    .catch(() => {
+                        const statusElement = document.getElementById(`status-${encodeURIComponent(url)}`);
+                        statusElement.textContent = 'Offline';
+                        statusElement.className = 'status offline';
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

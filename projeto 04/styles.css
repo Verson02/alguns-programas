@@ -1,0 +1,41 @@
+/* styles.css */
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
+    background-size: 400% 400%;
+    animation: gradientAnimation 1.37s ease infinite;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
+    }
+    25% {
+        background: linear-gradient(45deg, rgb(255, 128, 0), rgb(128, 0, 255), rgb(0, 255, 255));
+    }
+    50% {
+        background: linear-gradient(45deg, rgb(0, 255, 0), rgb(0, 255, 255), rgb(255, 0, 255));
+    }
+    75% {
+        background: linear-gradient(45deg, rgb(0, 0, 255), rgb(255, 0, 128), rgb(255, 255, 0));
+    }
+    100% {
+        background: linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
+    }
+}
