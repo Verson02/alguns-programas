@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de RPG - D&D 5E</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-md py-4">
+        <h1 class="text-center mb-4 titulo-principal">Criador de Personagem D&D 5E</h1>
+        
+        <div class="row g-4">
+            <!-- Seção de Criação -->
+            <div class="col-lg-6">
+                <div class="card criar-ficha shadow-lg">
+                    <div class="card-body">
+                        <form id="fichaForm">
+                            <!-- Informações Básicas -->
+                            <section class="mb-4">
+                                <h2 class="mb-3 secao-titulo">📜 Informações Básicas</h2>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="nome" class="form-label">Nome do Personagem</label>
+                                        <input type="text" class="form-control" id="nome" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nivel" class="form-label">Nível</label>
+                                        <input type="number" class="form-control" id="nivel" min="1" max="20" value="1" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="raca" class="form-label">Raça</label>
+                                        <select class="form-select" id="raca" required>
+                                            <option value="">Selecione...</option>
+                                            <option value="Anão">Anão</option>
+                                            <option value="Elfo">Elfo</option>
+                                            <option value="Halfling">Halfling</option>
+                                            <option value="Humano">Humano</option>
+                                            <option value="Draconato">Draconato</option>
+                                            <option value="Gnomo">Gnomo</option>
+                                            <option value="Meio-Elfo">Meio-Elfo</option>
+                                            <option value="Meio-Orc">Meio-Orc</option>
+                                            <option value="Tiefling">Tiefling</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="classe" class="form-label">Classe</label>
+                                        <select class="form-select" id="classe" required>
+                                            <option value="">Selecione...</option>
+                                            <option value="Bárbaro">Bárbaro</option>
+                                            <option value="Bardo">Bardo</option>
+                                            <option value="Bruxo">Bruxo</option>
+                                            <option value="Clérigo">Clérigo</option>
+                                            <option value="Druida">Druida</option>
+                                            <option value="Feiticeiro">Feiticeiro</option>
+                                            <option value="Guerreiro">Guerreiro</option>
+                                            <option value="Ladino">Ladino</option>
+                                            <option value="Mago">Mago</option>
+                                            <option value="Monge">Monge</option>
+                                            <option value="Paladino">Paladino</option>
+                                            <option value="Patrulheiro">Patrulheiro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Atributos -->
+                            <section class="mb-4">
+                                <h2 class="mb-3 secao-titulo">🎲 Atributos</h2>
+                                <button type="button" class="btn btn-rolar mb-3 w-100" id="gerarAtributos">
+                                    🎯 Rolagem 4d6 (Descartar o Menor)
+                                </button>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="atributo-group">
+                                            <label for="forca" class="form-label">Força</label>
+                                            <input type="number" class="form-control atributo-input" id="forca" min="1" max="20" value="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="atributo-group">
+                                            <label for="destreza" class="form-label">Destreza</label>
+                                            <input type="number" class="form-control atributo-input" id="destreza" min="1" max="20" value="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="atributo-group">
+                                            <label for="constituicao" class="form-label">Constituição</label>
+                                            <input type="number" class="form-control atributo-input" id="constituicao" min="1" max="20" value="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="atributo-group">
+                                            <label for="inteligencia" class="form-label">Inteligência</label>
+                                            <input type="number" class="form-control atributo-input" id="inteligencia" min="1" max="20" value="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="atributo-group">
+                                            <label for="sabedoria" class="form-label">Sabedoria</label>
+                                            <input type="number" class="form-control atributo-input" id="sabedoria" min="1" max="20" value="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="atributo-group">
+                                            <label for="carisma" class="form-label">Carisma</label>
+                                            <input type="number" class="form-control atributo-input" id="carisma" min="1" max="20" value="10">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Perícias -->
+                            <section class="mb-4">
+                                <h2 class="mb-3 secao-titulo">📚 Perícias</h2>
+                                <div id="periciasLista" class="row g-2"></div>
+                            </section>
+
+                            <!-- Inventário -->
+                            <section class="mb-4">
+                                <h2 class="mb-3 secao-titulo">🎒 Inventário</h2>
+                                <div class="inventario-container" id="inventarioContainer"></div>
+                                <button type="button" class="btn btn-add-item mt-2 w-100" id="adicionarItem">
+                                    ➕ Adicionar Item
+                                </button>
+                            </section>
+
+                            <!-- História -->
+                            <section class="mb-4">
+                                <h2 class="mb-3 secao-titulo">📖 História</h2>
+                                <div class="editor-rico" id="historiaEditor" contenteditable="true"></div>
+                            </section>
+
+                            <button type="submit" class="btn btn-gerar w-100">✨ Gerar Ficha Completa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ficha Gerada -->
+            <div class="col-lg-6">
+                <div class="card ficha-pronta shadow-lg" id="fichaContainer" style="display: none;">
+                    <div class="card-body">
+                        <div id="fichaContent"></div>
+                        <button class="btn btn-pdf mt-4 w-100" id="exportPDF">📥 Exportar para PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
