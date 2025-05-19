@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Generator</title>
+</head>
+<body>
+    <h1>Data Generator</h1>
+    <form action="/generate" method="get">
+        <label for="numRecords">Number of records:</label>
+        <input type="number" id="numRecords" name="numRecords" min="1" value="1000" required>
+        <br>
+        <label for="format">File format:</label>
+        <select id="format" name="format" required>
+            <option value="csv">CSV</option>
+            <option value="json">JSON</option>
+            <option value="xml">XML</option>
+        </select>
+        <br>
+        <label for="filename">File name:</label>
+        <input type="text" id="filename" name="filename" value="test_data" required>
+        <br>
+        <button type="submit">Generate Data</button>
+    </form>
+</body>
+</html>
